@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sidebar Menu</title>
+</head>
+<style type="text/css">
+*{
+  box-sizing: border-box;
+}
+html,body{
+overflow-x: hidden;
+height:100%;
+}
+body{
+font-family: areial,sans-serif;
+background-color:#fff;
+padding: 0;
+margin: 0;
+}
+.header{
+  background: #ee5253;
+  width:100%;
+  height: 60px;
+  position: fixed;
+  z-index: 10;
+}
+.main{
+height:100%;
+margin-top: 60px;
+padding: 10px 50px;
+}
+#sidebarMenu{
+height: 100%;
+position: fixed;
+left: 0;
+top: 0;
+width: 250px;
+margin-top: 60px;
+background: #2e86de;
+transform:translateX(-250px);
+transition: transform 250ms ease-in-out;
+}
+#openSidebarMenu:checked ~ #sidebarMenu{
+transform:translateX(0px);
+}
+.menu{
+list-style:none;
+padding: 0;
+margin: 0;
+}
+.menu li{
+color: #fff;
+border-bottom: 1px solid rgba(255,255,255, 0.10);
+}
+.menu li a{
+color:white;
+display: block;
+text-decoration: none;
+text-transform: uppercase;
+padding: 20px;
+}
+.sidebarIconToggle{
+width: 22px;
+position:absolute;
+height: 22px;
+z-index: 20;
+top: 22px;
+left: 15px;
+cursor: pointer;
+}
+.spinner{
+height: 3px;
+background: #fff;
+transition: all 0.3s;
+}
+.spinner.middle,
+.spinner.bottom{
+ margin-top: 3px;
+}
+#openSidebarMenu:checked ~ .sidebarIconToggle > .spinner.middle{
+opacity: 0;
+}
+#openSidebarMenu:checked ~ .sidebarIconToggle > .spinner.top{
+transform: rotate(135deg);
+margin-top: 8px;
+}
+#openSidebarMenu:checked ~ .sidebarIconToggle > .spinner.bottom{
+transform: rotate(-135deg);
+margin-top: -9px;
+}
+</style>
+<body>
+  <div class="header"></div>
+  <input type="checkbox" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner top"></div>
+    <div class="spinner middle"></div>
+    <div class="spinner bottom"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About us</a></li>
+      <li><a href="B.html">Gallery</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">Contact</a></li>
+  </div>
+  <div class="main">
+    <h2>Pure css</h2>
+    <p>I was very tempted to, instead of setting the bottom, to set the top and use top: calc(var(--lh) * (var(--max-lines) - 1)). My thinking there was that you might as well place the ellipsis at the exact point you need it. If the text is too short, the hidden overflow will cut it off. The problem with that is that it doesn’t deal with the “exactly max lines lines” problem. The ellipsis will show when the text matches the max lines — not only when it exceeds that space.
+
+      We’ll have to get trickier!
+
+      Note that this “setting stuff in the bottom-right” thing is pretty specific to left-to-right languages. I’m going to make the demo with CSS logical properties like inset-inline-end instead of right in hopes to make it more friendly to different languages and flow scenarios.
+
+      Another limitation is that the ellipsis doesn’t attach itself to the final word since it’s absolutely placed. We’re not going to fix that as well.
+      Let’s cover up the ellipsis when the text is too short
+      This is the second part of the trick. If we position the absolute at the bottom/end of the text all the time, that’s fine. But if the text is exactly equal to the --max-lines value or less, we want to hide it.</p>
+    The trick there is to make a little box that is the same background as what is behind it and set it on top of the ellipsis to cover it. We can do that with the other pseudo-element:
+  </div>
+</body>
+
+</html>
